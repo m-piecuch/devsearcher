@@ -2,4 +2,13 @@
 
 {% block content %}
 <h1>Single project template</h1>
-{% endblock %}
+
+<h1>You've choosen film number: {{projects.id}}</h1>
+
+<h3>{{projects.title}}</h3>
+<p>{{projects.description}}</p>
+
+<br><br>
+<a href="/">back to main page</a>
+
+{% endblock content %}

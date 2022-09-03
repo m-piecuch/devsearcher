@@ -1,27 +1,27 @@
 from multiprocessing import context
 from django.shortcuts import render
 
-projects = [
+projectsList = [
     {
         'id': '1',
         'title': 'Maverick',
-        'description': 'The best USA movie about the planes.'
+        'description': 'The best movie about planes.'
     },
     {
-        'id': '1',
-        'title': 'Maverick',
-        'description': 'The best USA movie about the planes.'
+        'id': '2',
+        'title': 'Terminator',
+        'description': 'The best movie about robots.'
     
     },
     {
-        'id': '1',
-        'title': 'Maverick',
-        'description': 'The best USA movie about the planes.'
+        'id': '3',
+        'title': 'Green Mile',
+        'description': 'The best movie about jails.'
     },
     {
-        'id': '1',
-        'title': 'Maverick',
-        'description': 'The best USA movie about the planes.' 
+        'id': '4',
+        'title': 'Titanic',
+        'description': 'The best movie about ships.' 
     }
 ]
 
@@ -30,7 +30,7 @@ projects = [
 def projects(request):
     page = 'page dage'
     context = {
-        'projects': projects,
+        'projects': projectsList,
         'message': page,
         'username': 'Janusz',
         'isAuthenticated': True
@@ -39,4 +39,9 @@ def projects(request):
 
 
 def project(request, pk):
-    return render(request, 'projects/single_project.html')
+    index = int(pk) - 1
+    item_to_show = projectsList[index]
+    context = {
+        "projects": item_to_show,
+    }
+    return render(request, 'projects/single_project.html', context)
