@@ -1,12 +1,42 @@
+from multiprocessing import context
 from django.shortcuts import render
 
-from django.http import HttpResponse
-
+projects = [
+    {
+        'id': '1',
+        'title': 'Maverick',
+        'description': 'The best USA movie about the planes.'
+    },
+    {
+        'id': '1',
+        'title': 'Maverick',
+        'description': 'The best USA movie about the planes.'
+    
+    },
+    {
+        'id': '1',
+        'title': 'Maverick',
+        'description': 'The best USA movie about the planes.'
+    },
+    {
+        'id': '1',
+        'title': 'Maverick',
+        'description': 'The best USA movie about the planes.' 
+    }
+]
 
 
 
 def projects(request):
-    return HttpResponse(f'All projects on the {request.path} path')
+    page = 'page dage'
+    context = {
+        'projects': projects,
+        'message': page,
+        'username': 'Janusz',
+        'isAuthenticated': True
+    }
+    return render(request, 'projects/projects.html', context)
+
 
 def project(request, pk):
-    return HttpResponse(f"Single project nr: {pk}")
+    return render(request, 'projects/single_project.html')
