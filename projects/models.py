@@ -1,7 +1,6 @@
-from tkinter import CASCADE
 from django.db import models
 import uuid
-
+    
 
 
 class Project(models.Model):

@@ -3,11 +3,15 @@
 {% block content %}
 <h1>Single project template</h1>
 
-<h1>You've choosen film number: {{projects.id}}</h1>
+<h1>You've choosen film number: {{projects.id|truncatechars:5}}</h1>
 
 <h3>{{projects.title}}</h3>
 <p>{{projects.description}}</p>
-
+<br>
+<p>This project has tags: </p>
+{% for tag in tags %}
+<h3 style="color:cornflowerblue">{{tag.name}}</h3>
+{% endfor %}
 <br><br>
 <a href="/">back to main page</a>
 
