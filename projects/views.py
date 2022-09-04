@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Project
 from .forms import ProjectForm
 
@@ -11,7 +11,7 @@ def projects(request):
 def project(request, pk):
     selected_project = Project.objects.get(id=pk)
     tags = selected_project.tags.all()
-    return render(request, 'projects/single_project.html', {"projects": selected_project, "tags": tags} )
+    return render(request, 'projects/single_project.html', {"projects": selected_project, "tags": tags})
 
 
 def createProject(request):
@@ -19,7 +19,29 @@ def createProject(request):
         form = ProjectForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('projects')
         
     form = ProjectForm()
     context = {'form': form}
     return render(request, 'projects/project_form.html', context)
+
+
+def updateProject(request, pk):
+    project = Project.objects.get(id=pk)
+    if request.method == "POST":
+        form = ProjectForm(request.POST, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('projects')
+    form = ProjectForm(instance=project)
+    context = {
+        'form': form,
+        'isUpdating': True
+               }
+    return render(request, 'projects/project_form.html', context)
+
+
+def deleteProject(request, pk):
+    project = Project.objects.get(id=pk)
+    project.delete()
+    return redirect('projects')

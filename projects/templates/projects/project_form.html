@@ -6,7 +6,11 @@
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}
+        {% if isUpdating %}
+        <input type="submit" value="Update">
+        {% else %}
         <input type="submit" value="Create">
+        {% endif %}
 
     </form>
 
