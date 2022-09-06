@@ -1,4 +1,6 @@
-<h1><a href="/">LOGO</a></h1>
+{% load static %}
 
+<a href="/"><img src="{% static 'images/logo.svg' %}" alt="alternative logo text"></a>
+<div></div>
 <a href="{% url 'create_project' %}">Add project</a>
 <hr>

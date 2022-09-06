@@ -1,0 +1,13 @@
+{% include 'main.html' %}
+{% block content %}
+<br><br><br>
+<hr>
+<h1 style="color: red; font:bold">Are you sure you want to <strong>DELETE</strong>project: {{project.title}} ?</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+    <a href="{% url 'projects'%}"><input type="button" value="Abort"></a>
+</form>
+
+{% endblock %}

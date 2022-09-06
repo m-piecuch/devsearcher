@@ -6,6 +6,7 @@ import uuid
 class Project(models.Model):
     title = models.CharField(max_length=125)
     description = models.TextField(null=True, blank=True)  #null is for database ( allow to insert record without data in description field), #blank is for Django to know in forms that with POST request is allowed to get the empty values here
+    featured_image = models.ImageField(blank=True, null=True, default='default.png')
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)  #'' are added becouse class Tag is declared below. If it would be above it's not necessary
