@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>Single project template</h1>
-
-<h1>You've choosen film number: {{projects.id|truncatechars:5}}</h1>
+<br>
+<h1>Project {{projects.title}}</h1>
+<br>
 
 <img src="{{ projects.featured_image.url }}" style="max-width: 50px;">
 
@@ -12,8 +12,9 @@
 <br>
 <p>This project has tags: </p>
 {% for tag in tags %}
-<h3 style="color:cornflowerblue">{{tag.name}}</h3>
+<div class="project_tag">{{tag.name}}</div>
 {% endfor %}
+<div class="clear_fix"></div>
 <br><br>
 <a href="/">back to main page</a>
 
